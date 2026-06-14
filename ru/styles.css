@@ -26,11 +26,49 @@
 
 * {
   box-sizing: border-box;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+*::-webkit-scrollbar:horizontal {
+  height: 0;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.sidebar,
+.form-panel,
+.profile-modal__body,
+.document-preview--zoomed {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar,
+.form-panel::-webkit-scrollbar,
+.profile-modal__body::-webkit-scrollbar,
+.document-preview--zoomed::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+html {
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: Montserrat, "Segoe UI", Arial, sans-serif;
@@ -57,6 +95,7 @@ button {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
+  overflow-x: clip;
 }
 
 .sidebar {
@@ -229,6 +268,7 @@ h3 {
 
 .workspace {
   padding: 22px 22px 138px;
+  overflow-x: clip;
 }
 
 .topbar {
@@ -353,7 +393,8 @@ a.ghost-action {
 .form-panel {
   max-height: calc(100vh - 188px);
   padding: 14px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .panel-heading {
@@ -614,21 +655,22 @@ textarea:focus {
   min-height: 76px;
   margin: 0;
   position: fixed;
-  right: 28px;
-  bottom: 0;
+  right: auto;
+  bottom: 18px;
   left: 308px;
+  width: calc(100vw - 336px);
   z-index: 18;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-width: 1px 1px 0;
-  border-radius: 4px 4px 0 0;
+  border-radius: 4px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
-  background: var(--accent);
+  overflow: hidden;
+  background: #535551;
   color: #ffffff;
-  box-shadow: 0 -14px 30px rgba(20, 20, 18, 0.16);
+  box-shadow: 0 -14px 30px rgba(20, 20, 18, 0.14);
 }
 
 .icon-action {
@@ -801,7 +843,8 @@ textarea:focus {
 
 .profile-modal__body {
   padding: 18px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -828,7 +871,8 @@ textarea:focus {
   min-height: 0;
   margin: 0;
   max-height: calc(100vh - 128px);
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   border: 1px solid var(--line);
   border-radius: 0 0 4px 4px;
   padding: 44px;
@@ -919,6 +963,7 @@ textarea:focus {
   .download-strip {
     right: 18px;
     left: 18px;
+    width: auto;
   }
 
   .content-grid {
@@ -1046,9 +1091,10 @@ textarea:focus {
     margin: 0;
     padding: 12px;
     position: fixed;
-    right: 0;
+    right: auto;
     bottom: 0;
     left: 0;
+    width: 100%;
     z-index: 18;
     border-width: 1px 0 0;
     border-radius: 4px 4px 0 0;
