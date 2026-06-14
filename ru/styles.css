@@ -377,6 +377,13 @@ a.ghost-action {
   display: none;
 }
 
+.form-panel.form-collapsed {
+  height: auto;
+  max-height: none;
+  overflow: hidden;
+  align-self: start;
+}
+
 form {
   display: grid;
   gap: 10px;
