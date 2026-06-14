@@ -303,6 +303,9 @@ a.ghost-action {
 
 .version-switch {
   min-width: 58px;
+  height: 40px;
+  line-height: 1;
+  align-self: stretch;
 }
 
 .compact {
@@ -605,15 +608,16 @@ textarea:focus {
   left: 308px;
   z-index: 18;
   padding: 12px 14px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-width: 1px 1px 0;
   border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
-  background: var(--accent-aqua);
-  box-shadow: 0 -10px 24px rgba(20, 20, 18, 0.08);
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 -14px 30px rgba(20, 20, 18, 0.16);
 }
 
 .icon-action {
@@ -655,12 +659,20 @@ textarea:focus {
 
 .download-strip span {
   margin-top: 2px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 13px;
 }
 
 .download-strip > .primary-action {
   justify-self: end;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.download-strip > .primary-action:hover {
+  background: #ffffff;
+  color: var(--accent-strong);
 }
 
 .toast {
