@@ -51,9 +51,9 @@
 
         <section class="pilot-box" aria-label="Next step">
           <p class="eyebrow">Pilot</p>
-          <p>Send a typical contract, appendix/SOW and closing document. We map the fields and prepare your first generator in 2 business days.</p>
+          <p>Send us a typical contract, appendix/SOW and closing document. We map the fields and prepare your first generator in 2 business days.</p>
           <div class="pilot-actions">
-            <a class="secondary-action" href="https://t.me/dphnll" target="_blank" rel="noreferrer">Message on Telegram</a>
+            <a class="secondary-action" href="https://t.me/dphnll" target="_blank" rel="noreferrer">Message via Telegram</a>
             <button class="secondary-action" id="copyChecklistButton" type="button">Copy checklist</button>
           </div>
         </section>
@@ -63,7 +63,7 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">Clickable prototype</p>
-            <h2>Create linked document packages:<br />fast, clear, without copy-paste errors</h2>
+            <h2>Create linked document packages:<br />fast, clear, no copy-paste errors</h2>
           </div>
           <div class="topbar-actions">
             <button class="ghost-action" id="resetButton" type="button">Reset</button>
@@ -95,7 +95,7 @@
             <form id="docForm">
               <fieldset>
                 <legend>Your template</legend>
-                <div class="coming-soon-control" aria-disabled="true">Document upload coming soon</div>
+                <div class="coming-soon-control" aria-disabled="true">Upload documents</div>
                 <p class="upload-note">Here you will soon be able to upload your own templates and automatically generate linked document packages.</p>
               </fieldset>
 
@@ -145,7 +145,7 @@
 
               <fieldset>
                 <legend>Scope and payment</legend>
-                <label>
+                <label class="field-wide">
                   Service description
                   <textarea name="serviceDescription" rows="3">Preparation of marketing materials and launch of a test campaign</textarea>
                 </label>
@@ -209,12 +209,10 @@
 
             <div class="preview-frame" aria-label="Document view area">
               <article class="document-preview">
+                <button class="icon-action dynamic-zoom-action" id="zoomButton" type="button" aria-label="Open larger view" title="Open larger view">
+                  <span aria-hidden="true">⌕</span>
+                </button>
                 <div class="document-content" id="documentPreview" aria-live="polite"></div>
-                <section class="dynamic-preview-surface" aria-label="Dynamic document view">
-                  <button class="icon-action dynamic-zoom-action" id="zoomButton" type="button" aria-label="Open larger view" title="Open larger view">
-                    <span aria-hidden="true">⌕</span>
-                  </button>
-                </section>
               </article>
             </div>
 

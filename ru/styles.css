@@ -56,7 +56,7 @@ button {
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: 280px minmax(0, 1fr);
 }
 
 .sidebar {
@@ -64,13 +64,13 @@ button {
   top: 0;
   min-height: 100vh;
   height: 100vh;
-  padding: 24px;
+  padding: 22px;
   border-right: 1px solid var(--line);
   background: #fbfbf8;
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
   overflow-y: auto;
 }
 
@@ -120,7 +120,7 @@ h1 {
 h2 {
   max-width: 760px;
   margin-bottom: 0;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1.18;
 }
 
@@ -203,7 +203,7 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #ffffff;
-  box-shadow: none;
+  box-shadow: 0 -10px 24px rgba(20, 20, 18, 0.08);
 }
 
 .pilot-box p {
@@ -218,15 +218,15 @@ h3 {
 }
 
 .workspace {
-  padding: 28px 28px 148px;
+  padding: 22px 22px 138px;
 }
 
 .topbar {
   position: sticky;
   top: 0;
   z-index: 9;
-  margin: -28px -28px 18px;
-  padding: 24px 28px 18px;
+  margin: -22px -22px 14px;
+  padding: 18px 22px 14px;
   background: rgba(247, 247, 244, 0.96);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px);
@@ -286,8 +286,8 @@ a.secondary-action {
 }
 
 .intro-band {
-  margin-bottom: 18px;
-  padding: 14px 16px;
+  margin-bottom: 14px;
+  padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #ffffff;
@@ -309,8 +309,8 @@ a.secondary-action {
 
 .content-grid {
   display: grid;
-  grid-template-columns: minmax(360px, 430px) minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
   align-items: stretch;
 }
 
@@ -323,11 +323,13 @@ a.secondary-action {
 }
 
 .form-panel {
-  padding: 18px;
+  max-height: calc(100vh - 188px);
+  padding: 14px;
+  overflow: auto;
 }
 
 .panel-heading {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -340,45 +342,50 @@ a.secondary-action {
 
 form {
   display: grid;
-  gap: 16px;
+  gap: 10px;
 }
 
 fieldset {
   min-width: 0;
   margin: 0;
-  padding: 14px;
+  padding: 10px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--accent-aqua);
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 10px;
 }
 
 legend {
   padding: 0 6px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--accent-strong);
   font-weight: 800;
 }
 
 label {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   color: var(--muted);
   font-size: 13px;
   font-weight: 700;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
 }
 
 input,
 select,
 textarea {
   width: 100%;
-  min-height: 40px;
+  min-height: 34px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #fff;
   color: var(--ink);
-  padding: 9px 10px;
+  padding: 7px 9px;
   outline: none;
 }
 
@@ -387,6 +394,7 @@ textarea {
 }
 
 .upload-note {
+  grid-column: 1 / -1;
   margin-bottom: 0;
   color: var(--muted);
   font-size: 12px;
@@ -394,6 +402,7 @@ textarea {
 }
 
 .coming-soon-control {
+  grid-column: 1 / -1;
   min-height: 40px;
   padding: 10px 12px;
   border: 1px dashed var(--line);
@@ -416,14 +425,14 @@ textarea:focus {
 
 .preview-panel {
   overflow: hidden;
-  min-height: calc(100vh - 178px);
+  min-height: calc(100vh - 188px);
   display: flex;
   flex-direction: column;
   background: #fff;
 }
 
 .linked-numbers {
-  padding: 16px;
+  padding: 12px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
@@ -432,8 +441,8 @@ textarea:focus {
 }
 
 .linked-numbers div {
-  min-height: 76px;
-  padding: 12px;
+  min-height: 58px;
+  padding: 9px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #ffffff;
@@ -450,12 +459,12 @@ textarea:focus {
 }
 
 .linked-numbers strong {
-  font-size: 20px;
+  font-size: 16px;
   overflow-wrap: anywhere;
 }
 
 .tabs {
-  padding: 12px 16px 0;
+  padding: 10px 12px 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
@@ -478,19 +487,26 @@ textarea:focus {
 }
 
 .preview-frame {
-  margin: 16px;
-  min-height: 620px;
+  margin: 12px;
+  min-height: 0;
   flex: 1;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--accent-aqua);
-  display: flex;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
 .document-preview {
-  flex: 1;
-  padding: 32px;
+  position: relative;
+  flex: none;
+  width: min(520px, 100%);
+  height: min(620px, calc(100vh - 360px));
+  min-height: 430px;
+  overflow: hidden;
+  padding: 26px 28px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #fff;
@@ -498,7 +514,8 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   font-family: "Times New Roman", Times, serif;
-  line-height: 1.58;
+  font-size: 12px;
+  line-height: 1.48;
   box-shadow: 0 10px 26px rgba(20, 20, 18, 0.045);
 }
 
@@ -507,16 +524,16 @@ textarea:focus {
 }
 
 .document-preview h3 {
-  margin: 0 0 18px;
+  margin: 0 36px 12px;
   text-align: center;
-  font-size: 22px;
+  font-size: 16px;
 }
 
 .document-preview .doc-meta {
   display: flex;
   justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .document-preview .muted-line {
@@ -526,13 +543,13 @@ textarea:focus {
 .document-preview table {
   width: 100%;
   border-collapse: collapse;
-  margin: 18px 0;
+  margin: 10px 0;
 }
 
 .document-preview th,
 .document-preview td {
   border: 1px solid var(--line);
-  padding: 8px;
+  padding: 5px;
   text-align: left;
   vertical-align: top;
 }
@@ -545,40 +562,34 @@ textarea:focus {
   font-weight: 700;
 }
 
-.dynamic-preview-surface {
-  min-height: 300px;
-  flex: 1;
-  margin-top: 32px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--accent-pale);
-  display: grid;
-  place-items: center;
-}
-
 .dynamic-zoom-action {
-  width: 52px;
-  height: 52px;
-  font-size: 28px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  font-size: 26px;
 }
 
 .download-strip {
-  min-height: 112px;
+  min-height: 76px;
   margin: 0;
   position: fixed;
   right: 28px;
-  bottom: 18px;
-  left: 328px;
+  bottom: 0;
+  left: 308px;
   z-index: 18;
-  padding: 16px;
+  padding: 12px 14px;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-width: 1px 1px 0;
+  border-radius: 4px 4px 0 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
   align-items: center;
   background: var(--accent-aqua);
-  box-shadow: 0 -10px 30px rgba(20, 20, 18, 0.08);
+  box-shadow: 0 -10px 24px rgba(20, 20, 18, 0.08);
 }
 
 .icon-action {
@@ -601,14 +612,27 @@ textarea:focus {
   color: var(--accent);
 }
 
+.dynamic-zoom-action {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.dynamic-zoom-action:hover {
+  border-color: var(--accent-strong);
+  background: var(--accent-strong);
+  color: #ffffff;
+}
+
 .download-strip strong,
 .download-strip span {
   display: block;
 }
 
 .download-strip span {
-  margin-top: 4px;
+  margin-top: 2px;
   color: var(--muted);
+  font-size: 13px;
 }
 
 .download-strip > .primary-action {
@@ -748,14 +772,37 @@ textarea:focus {
 }
 
 .document-preview--zoomed {
-  margin: 0;
+  flex: 1;
+  width: auto;
+  height: auto;
   min-height: 0;
+  margin: 0;
   max-height: calc(100vh - 128px);
   overflow: auto;
   border: 0;
   border-radius: 0;
   padding: 44px;
   font-size: 18px;
+  line-height: 1.58;
+}
+
+.document-preview--zoomed h3 {
+  margin-bottom: 18px;
+  font-size: 22px;
+}
+
+.document-preview--zoomed .doc-meta {
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.document-preview--zoomed table {
+  margin: 18px 0;
+}
+
+.document-preview--zoomed th,
+.document-preview--zoomed td {
+  padding: 8px;
 }
 
 @media (max-width: 1100px) {
@@ -975,11 +1022,6 @@ textarea:focus {
     margin: 12px;
     padding: 10px;
     min-height: 420px;
-  }
-
-  .dynamic-preview-surface {
-    min-height: 180px;
-    margin-top: 20px;
   }
 
   .preview-panel {

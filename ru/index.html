@@ -51,7 +51,7 @@
 
         <section class="pilot-box" aria-label="Следующий шаг">
           <p class="eyebrow">Пилот</p>
-          <p>Пришлите типовой договор, приложение и акт. Мы выделим поля и настроим ваш первый генератор за 2 рабочих дня.</p>
+          <p>Пришлите нам типовой договор, приложение и акт. Мы выделим поля и настроим ваш первый генератор за 2 рабочих дня.</p>
           <div class="pilot-actions">
             <a class="secondary-action" href="https://t.me/dphnll" target="_blank" rel="noreferrer">Написать в Telegram</a>
             <button class="secondary-action" id="copyChecklistButton" type="button">Скопировать список</button>
@@ -77,7 +77,7 @@
             <span>клиент узнает свой процесс, видит связанную нумерацию и готов прислать шаблоны для пилота.</span>
           </div>
           <div>
-            <strong>Что не обещаем:</strong>
+            <strong>Что не обещаем (пока):</strong>
             <span>самостоятельную загрузку шаблонов, юридический ИИ, ЭДО и полный SaaS в первой версии.</span>
           </div>
         </section>
@@ -95,7 +95,7 @@
             <form id="docForm">
               <fieldset>
                 <legend>Ваш шаблон</legend>
-                <div class="coming-soon-control" aria-disabled="true">Загрузка документов скоро</div>
+                <div class="coming-soon-control" aria-disabled="true">Загрузить документы</div>
                 <p class="upload-note">Здесь вы скоро сможете загрузить свои шаблоны и автоматически собрать связанную цепочку документов.</p>
               </fieldset>
 
@@ -145,7 +145,7 @@
 
               <fieldset>
                 <legend>Работы и оплата</legend>
-                <label>
+                <label class="field-wide">
                   Описание услуги
                   <textarea name="serviceDescription" rows="3">Подготовка рекламных материалов и запуск тестовой кампании</textarea>
                 </label>
@@ -209,12 +209,10 @@
 
             <div class="preview-frame" aria-label="Область просмотра">
               <article class="document-preview">
+                <button class="icon-action dynamic-zoom-action" id="zoomButton" type="button" aria-label="Увеличить документ" title="Увеличить документ">
+                  <span aria-hidden="true">⌕</span>
+                </button>
                 <div class="document-content" id="documentPreview" aria-live="polite"></div>
-                <section class="dynamic-preview-surface" aria-label="Динамический просмотр">
-                  <button class="icon-action dynamic-zoom-action" id="zoomButton" type="button" aria-label="Увеличить документ" title="Увеличить документ">
-                    <span aria-hidden="true">⌕</span>
-                  </button>
-                </section>
               </article>
             </div>
 
