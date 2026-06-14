@@ -393,6 +393,20 @@ textarea {
   line-height: 1.45;
 }
 
+.coming-soon-control {
+  min-height: 40px;
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  background: #ffffff;
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: not-allowed;
+}
+
 input:focus,
 select:focus,
 textarea:focus {

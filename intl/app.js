@@ -13,8 +13,6 @@ const toast = document.querySelector("#toast");
 const customerProfileStatus = document.querySelector("#customerProfileStatus");
 const customerProfileStatusLabel = customerProfileStatus.querySelector(".profile-status-label");
 const customerProfileStatusCompany = customerProfileStatus.querySelector(".profile-status-company");
-const templateUpload = document.querySelector("#templateUpload");
-const templateUploadStatus = document.querySelector("#templateUploadStatus");
 
 let activeTab = "contract";
 let toastTimer;
@@ -45,13 +43,6 @@ const formatAmount = (value) => {
   const amount = Number(clean);
   if (!Number.isFinite(amount)) return value || "not specified";
   return amount.toLocaleString("en-US");
-};
-
-const formatFileSize = (bytes) => {
-  if (!Number.isFinite(bytes)) return "";
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 };
 
 const getData = () => {
@@ -324,30 +315,6 @@ const initializeResponsiveFormState = () => {
   setFormCollapsed(window.matchMedia("(max-width: 760px)").matches);
 };
 
-const handleTemplateUpload = () => {
-  const file = templateUpload.files?.[0];
-  if (!file) {
-    templateUploadStatus.textContent = "The file stays in your browser. For setup, send anonymized templates via Telegram.";
-    return;
-  }
-
-  const fileInfo = `${file.name}, ${formatFileSize(file.size)}`;
-  const extension = file.name.split(".").pop()?.toLowerCase();
-  templateUploadStatus.textContent = `Selected file: ${fileInfo}. For setup, send this anonymized template via Telegram @dphnll.`;
-  showToast("Template selected locally. The file was not uploaded.");
-
-  if (extension === "txt" || extension === "html") {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      const text = String(reader.result || "").replace(/\s+/g, " ").trim();
-      if (text) {
-        templateUploadStatus.textContent = `Selected file: ${fileInfo}. Text preview: ${text.slice(0, 120)}${text.length > 120 ? "..." : ""}`;
-      }
-    });
-    reader.readAsText(file);
-  }
-};
-
 const downloadPreview = () => {
   const data = getData();
   const documentNumber = getActiveDocumentNumber(data);
@@ -478,7 +445,6 @@ document.querySelector("#previewModalBackdrop").addEventListener("click", closeZ
 document.querySelector("#copyChecklistButton").addEventListener("click", copyChecklist);
 document.querySelector("#resetButton").addEventListener("click", resetForm);
 formToggleButton.addEventListener("click", toggleFormPanel);
-templateUpload.addEventListener("change", handleTemplateUpload);
 document.querySelector("#openCustomerProfileButton").addEventListener("click", openCustomerProfileModal);
 document.querySelector("#closeCustomerProfileButton").addEventListener("click", closeCustomerProfileModal);
 document.querySelector("#customerProfileBackdrop").addEventListener("click", closeCustomerProfileModal);
