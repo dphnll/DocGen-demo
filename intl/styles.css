@@ -26,39 +26,6 @@
 
 * {
   box-sizing: border-box;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-*::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
-}
-
-*::-webkit-scrollbar:horizontal {
-  height: 0;
-}
-
-*::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
-.sidebar,
-.form-panel,
-.profile-modal__body,
-.document-preview--zoomed {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.sidebar::-webkit-scrollbar,
-.form-panel::-webkit-scrollbar,
-.profile-modal__body::-webkit-scrollbar,
-.document-preview--zoomed::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
 }
 
 html {
@@ -390,6 +357,7 @@ a.ghost-action {
 }
 
 .form-panel {
+  height: calc(100vh - 188px);
   max-height: calc(100vh - 188px);
   padding: 14px;
   overflow-y: auto;
