@@ -65,9 +65,9 @@ button {
   min-height: 100vh;
   height: 100vh;
   padding: 22px;
-  border-right: 1px solid var(--line);
-  background: #fbfbf8;
-  color: var(--ink);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--accent);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -87,8 +87,8 @@ button {
   display: grid;
   place-items: center;
   border-radius: 4px;
-  background: var(--accent-strong);
-  color: #ffffff;
+  background: #ffffff;
+  color: var(--accent-strong);
   font-weight: 800;
 }
 
@@ -101,12 +101,13 @@ button {
 }
 
 .sidebar .eyebrow {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 h1,
 h2,
 h3,
+h4,
 p {
   margin-top: 0;
 }
@@ -136,25 +137,25 @@ h3 {
 
 .customer-profile-box {
   padding: 16px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 4px;
-  background: #ffffff;
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
 .customer-profile-box p {
   margin-bottom: 14px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.45;
 }
 
 .package-item {
   min-height: 76px;
   padding: 12px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 4px;
-  background: #ffffff;
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
   gap: 12px;
@@ -163,9 +164,9 @@ h3 {
 }
 
 .package-item.active {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-  color: var(--accent);
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--accent-strong);
 }
 
 .package-item.active small {
@@ -173,7 +174,7 @@ h3 {
 }
 
 .package-item.active .doc-icon {
-  background: rgba(0, 83, 77, 0.12);
+  background: var(--accent-soft);
   color: var(--accent-strong);
 }
 
@@ -184,7 +185,7 @@ h3 {
 
 .package-item small {
   margin-top: 4px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.66);
 }
 
 .doc-icon {
@@ -193,23 +194,32 @@ h3 {
   display: grid;
   place-items: center;
   border-radius: 4px;
-  background: var(--accent-soft);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
   font-weight: 800;
 }
 
 .pilot-box {
   margin-top: auto;
   padding: 16px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 4px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 -10px 24px rgba(20, 20, 18, 0.08);
 }
 
 .pilot-box p {
   margin-bottom: 14px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.5;
+}
+
+.customer-profile-box .eyebrow,
+.pilot-box .eyebrow {
+  color: #ffffff;
+  font-size: inherit;
+  font-weight: 700;
+  text-transform: none;
 }
 
 .pilot-actions {
@@ -273,6 +283,12 @@ a.secondary-action {
   border-color: var(--line);
   background: #ffffff;
   color: var(--ink);
+}
+
+.sidebar .secondary-action {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
 }
 
 .ghost-action {
@@ -529,6 +545,11 @@ textarea:focus {
   font-size: 16px;
 }
 
+.document-preview h4 {
+  margin: 10px 0 4px;
+  font-size: 12px;
+}
+
 .document-preview .doc-meta {
   display: flex;
   justify-content: space-between;
@@ -552,6 +573,11 @@ textarea:focus {
   padding: 5px;
   text-align: left;
   vertical-align: top;
+}
+
+.document-preview .requisites-table th,
+.document-preview .requisites-table td {
+  width: 50%;
 }
 
 .field-token {
@@ -698,12 +724,12 @@ textarea:focus {
 
 .preview-modal__dialog {
   position: relative;
-  width: min(980px, calc(100vw - 56px));
+  width: min(720px, calc(100vw - 56px), calc((100vh - 128px) * 0.707));
   max-height: calc(100vh - 56px);
   border-radius: 4px;
-  background: var(--panel);
+  background: transparent;
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
+  overflow: visible;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
 }
@@ -723,7 +749,9 @@ textarea:focus {
 .preview-modal__header {
   min-height: 72px;
   padding: 14px 18px;
-  border-bottom: 1px solid var(--line);
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
   display: flex;
   justify-content: space-between;
   gap: 18px;
@@ -772,23 +800,30 @@ textarea:focus {
 }
 
 .document-preview--zoomed {
-  flex: 1;
-  width: auto;
+  flex: none;
+  width: 100%;
+  aspect-ratio: 1 / 1.414;
   height: auto;
   min-height: 0;
   margin: 0;
   max-height: calc(100vh - 128px);
   overflow: auto;
-  border: 0;
-  border-radius: 0;
+  border: 1px solid var(--line);
+  border-radius: 0 0 4px 4px;
   padding: 44px;
   font-size: 18px;
   line-height: 1.58;
+  box-shadow: none;
 }
 
 .document-preview--zoomed h3 {
   margin-bottom: 18px;
   font-size: 22px;
+}
+
+.document-preview--zoomed h4 {
+  margin: 18px 0 8px;
+  font-size: 18px;
 }
 
 .document-preview--zoomed .doc-meta {
@@ -899,9 +934,9 @@ textarea:focus {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
     align-items: center;
-    background: #ffffff;
-    color: var(--ink);
-    box-shadow: 0 10px 28px rgba(20, 20, 18, 0.08);
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 10px 28px rgba(20, 20, 18, 0.18);
   }
 
   .customer-profile-box .eyebrow {
@@ -917,12 +952,12 @@ textarea:focus {
 
   .profile-status-label {
     display: block;
-    color: var(--muted);
+    color: rgba(255, 255, 255, 0.72);
   }
 
   .profile-status-company {
     display: block;
-    color: var(--ink);
+    color: #ffffff;
     font-weight: 700;
     overflow-wrap: normal;
   }
@@ -931,9 +966,9 @@ textarea:focus {
     width: auto;
     min-height: 36px;
     padding: 0 12px;
-    border-color: var(--accent);
-    background: var(--accent);
-    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.16);
+    background: var(--accent-soft);
+    color: var(--accent-strong);
   }
 
   .topbar {
@@ -1061,6 +1096,10 @@ textarea:focus {
   }
 
   .document-preview--zoomed {
+    width: 100%;
+    height: calc(100vh - 96px);
+    aspect-ratio: auto;
+    min-height: 0;
     max-height: calc(100vh - 96px);
     padding: 22px;
     font-size: 16px;
