@@ -269,6 +269,11 @@ a.secondary-action {
   place-items: center;
 }
 
+a.ghost-action {
+  display: grid;
+  place-items: center;
+}
+
 .primary-action {
   background: var(--accent);
   color: #fff;
@@ -295,6 +300,10 @@ a.secondary-action {
   border-color: var(--line);
   background: #fff;
   color: var(--ink);
+}
+
+.version-switch {
+  min-width: 58px;
 }
 
 .compact {
@@ -1039,6 +1048,7 @@ textarea:focus {
   }
 
   .topbar-actions button,
+  .topbar-actions a,
   .download-strip button {
     width: 100%;
   }
