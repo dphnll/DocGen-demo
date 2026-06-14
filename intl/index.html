@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocGen International</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Document package">
+        <div class="brand">
+          <div class="brand-mark">GD</div>
+          <div>
+            <h1>Document Generator</h1>
+          </div>
+        </div>
+
+        <section class="customer-profile-box" aria-label="Company profile">
+          <p class="eyebrow">Company profile</p>
+          <p id="customerProfileStatus">
+            <span class="profile-status-label">Company profile is not saved yet.</span>
+            <span class="profile-status-company"></span>
+          </p>
+          <button class="secondary-action" id="openCustomerProfileButton" type="button">Open profile</button>
+        </section>
+
+        <nav class="package-list" aria-label="Package documents">
+          <button class="package-item active" data-tab="contract" type="button">
+            <span class="doc-icon">01</span>
+            <span>
+              <strong>Contract</strong>
+              <small id="navContractNumber">INT-001</small>
+            </span>
+          </button>
+          <button class="package-item" data-tab="sow" type="button">
+            <span class="doc-icon">02</span>
+            <span>
+              <strong>Appendix / SOW</strong>
+              <small id="navSowNumber">INT-001-01</small>
+            </span>
+          </button>
+          <button class="package-item" data-tab="act" type="button">
+            <span class="doc-icon">03</span>
+            <span>
+              <strong>Closing doc</strong>
+              <small id="navActNumber">INT-001-C1</small>
+            </span>
+          </button>
+        </nav>
+
+        <section class="pilot-box" aria-label="Next step">
+          <p class="eyebrow">Pilot</p>
+          <p>Send a typical contract, appendix/SOW and closing document. We map the fields and prepare your first generator in 2 business days.</p>
+          <div class="pilot-actions">
+            <a class="secondary-action" href="https://t.me/dphnll" target="_blank" rel="noreferrer">Message on Telegram</a>
+            <button class="secondary-action" id="copyChecklistButton" type="button">Copy checklist</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Clickable prototype</p>
+            <h2>Create linked document packages:<br />fast, clear, without copy-paste errors</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-action" id="resetButton" type="button">Reset</button>
+            <button class="primary-action" id="downloadButton" type="button">Download ready document</button>
+          </div>
+        </header>
+
+        <section class="intro-band" aria-label="Offer summary">
+          <div>
+            <strong>What we test:</strong>
+            <span>whether the workflow feels familiar, linked numbering is useful, and templates are worth configuring.</span>
+          </div>
+          <div>
+            <strong>What we do not promise yet:</strong>
+            <span>self-service template setup, legal AI, e-signature workflow, or a full enterprise SaaS.</span>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <section class="form-panel" aria-label="Generation form">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Generation data</p>
+                <h3>Fill once</h3>
+              </div>
+              <button class="ghost-action compact form-toggle" id="formToggleButton" type="button" aria-expanded="true">Collapse</button>
+            </div>
+
+            <form id="docForm">
+              <fieldset>
+                <legend>Your template</legend>
+                <label>
+                  Upload a file for testing
+                  <input id="templateUpload" type="file" accept=".doc,.docx,.pdf,.txt,.html" />
+                </label>
+                <p class="upload-note" id="templateUploadStatus">The file stays in your browser. For setup, send anonymized templates via Telegram.</p>
+              </fieldset>
+
+              <fieldset>
+                <legend>Company</legend>
+                <label>
+                  Company name
+                  <input name="customerName" value="Example GmbH" />
+                </label>
+                <label>
+                  Tax ID / registration no.
+                  <input name="customerInn" value="DE123456789" />
+                </label>
+                <label>
+                  Company address
+                  <input name="customerAddress" value="Berlin, Example Str. 12" />
+                </label>
+                <label>
+                  Authorized signer
+                  <input name="customerSigner" value="Maria Schmidt" />
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Contractor</legend>
+                <label>
+                  Name / company
+                  <input name="contractorName" value="Alex Weber Consulting" />
+                </label>
+                <label>
+                  Tax ID / registration no.
+                  <input name="contractorInn" value="EU987654321" />
+                </label>
+                <label>
+                  Email or phone
+                  <input name="contractorContact" value="alex@example.com" />
+                </label>
+                <label>
+                  Contractor type
+                  <select name="contractorType">
+                    <option value="freelancer">freelancer</option>
+                    <option value="sole proprietor">sole proprietor</option>
+                    <option value="company">company</option>
+                  </select>
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Scope and payment</legend>
+                <label>
+                  Service description
+                  <textarea name="serviceDescription" rows="3">Preparation of marketing materials and launch of a test campaign</textarea>
+                </label>
+                <label>
+                  Amount, EUR
+                  <input name="amount" value="2500" inputmode="numeric" />
+                </label>
+                <label>
+                  Start date
+                  <input name="startDate" type="date" value="2026-06-15" />
+                </label>
+                <label>
+                  End date
+                  <input name="endDate" type="date" value="2026-06-30" />
+                </label>
+                <label>
+                  Payment terms
+                  <input name="paymentTerms" value="100% within 5 business days after approval of the closing document" />
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Linked numbering</legend>
+                <label>
+                  Contract number
+                  <input name="contractNumber" value="INT-001" />
+                </label>
+                <label>
+                  Appendix / SOW suffix
+                  <input name="sowSuffix" value="01" />
+                </label>
+                <label>
+                  Closing document suffix
+                  <input name="actSuffix" value="C1" />
+                </label>
+              </fieldset>
+            </form>
+          </section>
+
+          <section class="preview-panel" aria-label="Document preview">
+            <div class="linked-numbers" aria-label="Linked numbers">
+              <div>
+                <span>Contract</span>
+                <strong id="contractNumberView">INT-001</strong>
+              </div>
+              <div>
+                <span>Appendix / SOW</span>
+                <strong id="sowNumberView">INT-001-01</strong>
+              </div>
+              <div>
+                <span>Closing doc</span>
+                <strong id="actNumberView">INT-001-C1</strong>
+              </div>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="Document preview">
+              <button class="tab active" data-tab="contract" type="button">Contract</button>
+              <button class="tab" data-tab="sow" type="button">Appendix / SOW</button>
+              <button class="tab" data-tab="act" type="button">Closing doc</button>
+            </div>
+
+            <div class="preview-frame" aria-label="Document view area">
+              <article class="document-preview">
+                <div class="document-content" id="documentPreview" aria-live="polite"></div>
+                <section class="dynamic-preview-surface" aria-label="Dynamic document view">
+                  <button class="icon-action dynamic-zoom-action" id="zoomButton" type="button" aria-label="Open larger view" title="Open larger view">
+                    <span aria-hidden="true">⌕</span>
+                  </button>
+                </section>
+              </article>
+            </div>
+
+            <div class="download-strip">
+              <div>
+                <strong id="downloadTitle">Contract is ready</strong>
+                <span id="downloadMeta">Download the file and open it in Word or Google Docs</span>
+              </div>
+              <button class="primary-action compact" id="downloadButtonBottom" type="button">Download ready contract</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="preview-modal" id="previewModal" aria-hidden="true">
+      <div class="preview-modal__backdrop" id="previewModalBackdrop"></div>
+      <section class="preview-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+        <header class="preview-modal__header">
+          <div>
+            <p class="eyebrow">Document view</p>
+            <h3 id="previewModalTitle">Contract</h3>
+          </div>
+          <button class="icon-action" id="closeZoomButton" type="button" aria-label="Close view" title="Close view">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <article class="document-preview document-preview--zoomed" id="zoomedPreview"></article>
+      </section>
+    </div>
+
+    <div class="profile-modal" id="customerProfileModal" aria-hidden="true">
+      <div class="profile-modal__backdrop" id="customerProfileBackdrop"></div>
+      <section class="profile-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="customerProfileModalTitle">
+        <header class="profile-modal__header">
+          <div>
+            <p class="eyebrow">Company profile</p>
+            <h3 id="customerProfileModalTitle">Reusable company details</h3>
+          </div>
+          <button class="icon-action" id="closeCustomerProfileButton" type="button" aria-label="Close profile" title="Close profile">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <form class="profile-modal__body" id="customerProfileForm">
+          <label>
+            Company name
+            <input name="customerName" value="" />
+          </label>
+          <label>
+            Tax ID / registration no.
+            <input name="customerInn" value="" />
+          </label>
+          <label>
+            Registration number
+            <input name="customerOgrn" value="" />
+          </label>
+          <label>
+            Company address
+            <input name="customerAddress" value="" />
+          </label>
+          <label>
+            Authorized signer
+            <input name="customerSigner" value="" />
+          </label>
+          <label>
+            Signer role
+            <input name="customerSignerRole" value="" />
+          </label>
+          <label>
+            Signing authority
+            <input name="customerSignerBasis" value="" placeholder="Articles / power of attorney / internal approval" />
+          </label>
+          <label>
+            Email or phone
+            <input name="customerContact" value="" />
+          </label>
+          <label class="profile-modal__wide">
+            Bank details
+            <textarea name="customerBankDetails" rows="4"></textarea>
+          </label>
+        </form>
+
+        <footer class="profile-modal__footer">
+          <button class="ghost-action" id="newCustomerProfileButton" type="button">Create from scratch</button>
+          <button class="ghost-action" id="clearCustomerProfileButton" type="button">Clear saved profile</button>
+          <button class="primary-action" id="saveCustomerProfileButton" type="button">Save and apply</button>
+        </footer>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Генератор документов</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Пакет документов">
+        <div class="brand">
+          <div class="brand-mark">GD</div>
+          <div>
+            <h1>Генератор документов</h1>
+          </div>
+        </div>
+
+        <section class="customer-profile-box" aria-label="Профиль заказчика">
+          <p class="eyebrow">Профиль заказчика</p>
+          <p id="customerProfileStatus">
+            <span class="profile-status-label">Профиль заказчика пока не сохранен.</span>
+            <span class="profile-status-company"></span>
+          </p>
+          <button class="secondary-action" id="openCustomerProfileButton" type="button">Открыть профиль</button>
+        </section>
+
+        <nav class="package-list" aria-label="Документы пакета">
+          <button class="package-item active" data-tab="contract" type="button">
+            <span class="doc-icon">01</span>
+            <span>
+              <strong>Договор</strong>
+              <small id="navContractNumber">24-001</small>
+            </span>
+          </button>
+          <button class="package-item" data-tab="sow" type="button">
+            <span class="doc-icon">02</span>
+            <span>
+              <strong>Приложение</strong>
+              <small id="navSowNumber">24-001-01</small>
+            </span>
+          </button>
+          <button class="package-item" data-tab="act" type="button">
+            <span class="doc-icon">03</span>
+            <span>
+              <strong>Акт</strong>
+              <small id="navActNumber">24-001-A1</small>
+            </span>
+          </button>
+        </nav>
+
+        <section class="pilot-box" aria-label="Следующий шаг">
+          <p class="eyebrow">Пилот</p>
+          <p>Пришлите типовой договор, приложение и акт. Мы выделим поля и настроим ваш первый генератор за 2 рабочих дня.</p>
+          <div class="pilot-actions">
+            <a class="secondary-action" href="https://t.me/dphnll" target="_blank" rel="noreferrer">Написать в Telegram</a>
+            <button class="secondary-action" id="copyChecklistButton" type="button">Скопировать список</button>
+          </div>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Кликабельный прототип</p>
+            <h2>Создавайте связанные документы:<br />быстро, удобно, без ошибок</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-action" id="resetButton" type="button">Сбросить</button>
+            <button class="primary-action" id="downloadButton" type="button">Скачать готовый документ</button>
+          </div>
+        </header>
+
+        <section class="intro-band" aria-label="Суть предложения">
+          <div>
+            <strong>Что проверяем:</strong>
+            <span>клиент узнает свой процесс, видит связанную нумерацию и готов прислать шаблоны для пилота.</span>
+          </div>
+          <div>
+            <strong>Что не обещаем:</strong>
+            <span>самостоятельную загрузку шаблонов, юридический ИИ, ЭДО и полный SaaS в первой версии.</span>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <section class="form-panel" aria-label="Форма генерации">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Данные для генерации</p>
+                <h3>Заполните один раз</h3>
+              </div>
+              <button class="ghost-action compact form-toggle" id="formToggleButton" type="button" aria-expanded="true">Свернуть</button>
+            </div>
+
+            <form id="docForm">
+              <fieldset>
+                <legend>Ваш шаблон</legend>
+                <label>
+                  Загрузите файл для теста
+                  <input id="templateUpload" type="file" accept=".doc,.docx,.pdf,.txt,.html" />
+                </label>
+                <p class="upload-note" id="templateUploadStatus">Файл останется в браузере. Для настройки генератора пришлите шаблоны в Telegram.</p>
+              </fieldset>
+
+              <fieldset>
+                <legend>Заказчик</legend>
+                <label>
+                  Компания
+                  <input name="customerName" value="ООО Пример" />
+                </label>
+                <label>
+                  ИНН
+                  <input name="customerInn" value="7700000000" />
+                </label>
+                <label>
+                  Юридический адрес
+                  <input name="customerAddress" value="Москва, ул. Новая, д. 12" />
+                </label>
+                <label>
+                  Подписант
+                  <input name="customerSigner" value="Иванова Мария Сергеевна" />
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Исполнитель</legend>
+                <label>
+                  ФИО / название
+                  <input name="contractorName" value="Петров Алексей Игоревич" />
+                </label>
+                <label>
+                  ИНН
+                  <input name="contractorInn" value="500000000000" />
+                </label>
+                <label>
+                  Email или телефон
+                  <input name="contractorContact" value="petrov@example.ru" />
+                </label>
+                <label>
+                  Тип исполнителя
+                  <select name="contractorType">
+                    <option value="самозанятый">самозанятый</option>
+                    <option value="ИП">ИП</option>
+                    <option value="юрлицо">юрлицо</option>
+                  </select>
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Работы и оплата</legend>
+                <label>
+                  Описание услуги
+                  <textarea name="serviceDescription" rows="3">Подготовка рекламных материалов и запуск тестовой кампании</textarea>
+                </label>
+                <label>
+                  Сумма, руб.
+                  <input name="amount" value="75000" inputmode="numeric" />
+                </label>
+                <label>
+                  Дата начала
+                  <input name="startDate" type="date" value="2026-06-15" />
+                </label>
+                <label>
+                  Дата окончания
+                  <input name="endDate" type="date" value="2026-06-30" />
+                </label>
+                <label>
+                  Условия оплаты
+                  <input name="paymentTerms" value="100% в течение 5 рабочих дней после подписания акта" />
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Связанная нумерация</legend>
+                <label>
+                  Номер договора
+                  <input name="contractNumber" value="24-001" />
+                </label>
+                <label>
+                  Суффикс приложения
+                  <input name="sowSuffix" value="01" />
+                </label>
+                <label>
+                  Суффикс акта
+                  <input name="actSuffix" value="A1" />
+                </label>
+              </fieldset>
+            </form>
+          </section>
+
+          <section class="preview-panel" aria-label="Просмотр документов">
+            <div class="linked-numbers" aria-label="Связанные номера">
+              <div>
+                <span>Договор</span>
+                <strong id="contractNumberView">24-001</strong>
+              </div>
+              <div>
+                <span>Приложение</span>
+                <strong id="sowNumberView">24-001-01</strong>
+              </div>
+              <div>
+                <span>Акт</span>
+                <strong id="actNumberView">24-001-A1</strong>
+              </div>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="Просмотр документов">
+              <button class="tab active" data-tab="contract" type="button">Договор</button>
+              <button class="tab" data-tab="sow" type="button">Приложение</button>
+              <button class="tab" data-tab="act" type="button">Акт</button>
+            </div>
+
+            <div class="preview-frame" aria-label="Область просмотра">
+              <article class="document-preview">
+                <div class="document-content" id="documentPreview" aria-live="polite"></div>
+                <section class="dynamic-preview-surface" aria-label="Динамический просмотр">
+                  <button class="icon-action dynamic-zoom-action" id="zoomButton" type="button" aria-label="Увеличить документ" title="Увеличить документ">
+                    <span aria-hidden="true">⌕</span>
+                  </button>
+                </section>
+              </article>
+            </div>
+
+            <div class="download-strip">
+              <div>
+                <strong id="downloadTitle">Договор готов</strong>
+                <span id="downloadMeta">Скачайте файл и откройте его в Word или Google Docs</span>
+              </div>
+              <button class="primary-action compact" id="downloadButtonBottom" type="button">Скачать готовый договор</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="preview-modal" id="previewModal" aria-hidden="true">
+      <div class="preview-modal__backdrop" id="previewModalBackdrop"></div>
+      <section class="preview-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+        <header class="preview-modal__header">
+          <div>
+            <p class="eyebrow">Просмотр документа</p>
+            <h3 id="previewModalTitle">Договор</h3>
+          </div>
+          <button class="icon-action" id="closeZoomButton" type="button" aria-label="Закрыть просмотр" title="Закрыть просмотр">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <article class="document-preview document-preview--zoomed" id="zoomedPreview"></article>
+      </section>
+    </div>
+
+    <div class="profile-modal" id="customerProfileModal" aria-hidden="true">
+      <div class="profile-modal__backdrop" id="customerProfileBackdrop"></div>
+      <section class="profile-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="customerProfileModalTitle">
+        <header class="profile-modal__header">
+          <div>
+            <p class="eyebrow">Профиль заказчика</p>
+            <h3 id="customerProfileModalTitle">Реквизиты для автоподстановки</h3>
+          </div>
+          <button class="icon-action" id="closeCustomerProfileButton" type="button" aria-label="Закрыть профиль" title="Закрыть профиль">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <form class="profile-modal__body" id="customerProfileForm">
+          <label>
+            Компания
+            <input name="customerName" value="" />
+          </label>
+          <label>
+            ИНН
+            <input name="customerInn" value="" />
+          </label>
+          <label>
+            ОГРН
+            <input name="customerOgrn" value="" />
+          </label>
+          <label>
+            Юридический адрес
+            <input name="customerAddress" value="" />
+          </label>
+          <label>
+            Подписант
+            <input name="customerSigner" value="" />
+          </label>
+          <label>
+            Должность подписанта
+            <input name="customerSignerRole" value="" />
+          </label>
+          <label>
+            Основание полномочий
+            <input name="customerSignerBasis" value="" placeholder="Устав / доверенность / приказ" />
+          </label>
+          <label>
+            Email или телефон
+            <input name="customerContact" value="" />
+          </label>
+          <label class="profile-modal__wide">
+            Банковские реквизиты
+            <textarea name="customerBankDetails" rows="4"></textarea>
+          </label>
+        </form>
+
+        <footer class="profile-modal__footer">
+          <button class="ghost-action" id="newCustomerProfileButton" type="button">Создать с нуля</button>
+          <button class="ghost-action" id="clearCustomerProfileButton" type="button">Очистить сохраненный</button>
+          <button class="primary-action" id="saveCustomerProfileButton" type="button">Сохранить и подставить</button>
+        </footer>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>

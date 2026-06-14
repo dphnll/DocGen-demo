@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocGen</title>
+    <style>
+      :root {
+        font-family: Montserrat, "Segoe UI", Arial, sans-serif;
+        color: #2b2c2a;
+        background: #f7f7f4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      main {
+        width: min(780px, 100%);
+        display: grid;
+        gap: 22px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 36px;
+        line-height: 1.05;
+      }
+
+      p {
+        margin: 0;
+        color: #6f706d;
+        line-height: 1.55;
+      }
+
+      .scenario-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      a {
+        min-height: 180px;
+        padding: 18px;
+        border: 1px solid #deded8;
+        border-radius: 4px;
+        background: #ffffff;
+        color: inherit;
+        text-decoration: none;
+        display: grid;
+        align-content: space-between;
+      }
+
+      strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 20px;
+      }
+
+      span {
+        color: #6f706d;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 680px) {
+        .scenario-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1>DocGen</h1>
+        <p>Выберите сценарий кликабельного прототипа.</p>
+      </div>
+
+      <section class="scenario-grid" aria-label="Сценарии прототипа">
+        <a href="./ru/">
+          <div>
+            <strong>Российский сценарий</strong>
+            <span>Договор, приложение и акт для малого бизнеса, бухгалтерии и подрядчиков.</span>
+          </div>
+          <span>Открыть RU demo</span>
+        </a>
+
+        <a href="./intl/">
+          <div>
+            <strong>International scenario</strong>
+            <span>Contract, appendix/SOW and closing document for international document workflows.</span>
+          </div>
+          <span>Open INTL demo</span>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
